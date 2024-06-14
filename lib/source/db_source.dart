@@ -1,6 +1,6 @@
 import 'package:riverpod_clean_architecture_lib/riverpod_cleanarchitecture.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../exceptions/custom_exception/local_db_exception.dart';
 
