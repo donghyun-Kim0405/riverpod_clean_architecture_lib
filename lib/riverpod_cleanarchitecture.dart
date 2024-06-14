@@ -76,6 +76,7 @@ class RiverpodCleanArchitecture {
         routes: routes,
         initialRoute: initialRoute,
         navigatorObservers: [RouteManager.instance],
+        navigatorKey: RouteManager.instance.navigatorKey,
       ),
     );
   }
