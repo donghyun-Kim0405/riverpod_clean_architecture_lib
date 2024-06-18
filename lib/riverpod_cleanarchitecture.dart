@@ -43,6 +43,8 @@ class RiverpodCleanArchitecture {
     required String routeForLoggedOut,
     required String initialRoute,
     required Map<String, WidgetBuilder> routes,
+    required Function sizeUtilInitiatedCallback
+
   }) {
 
     _ui = ui;
@@ -57,6 +59,7 @@ class RiverpodCleanArchitecture {
       child: MaterialApp(
         builder: (context, child) {
           SizeUtil.setSizeUsingContext(context);
+          sizeUtilInitiatedCallback();
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
             child: child!,
