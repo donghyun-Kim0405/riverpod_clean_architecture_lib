@@ -12,10 +12,10 @@ abstract class FirestoreRepository<T> {
 
   final logger = RiverpodCleanArchitecture.logger;
   final String collectionName;
-  final T? Function(DocumentSnapshot) fromDoc;
+  final T? Function(Map<String, dynamic>) fromMap;
   CollectionReference get ref => FirebaseFirestore.instance.collection(collectionName);
 
-  FirestoreRepository({required this.collectionName, required this.fromDoc});
+  FirestoreRepository({required this.collectionName, required this.fromMap});
 
   /// 컬렉션 내 모든 도큐먼트의 갯수를 리턴합니다.
   Future<int> getCount() async =>
@@ -59,7 +59,7 @@ abstract class FirestoreRepository<T> {
 
     if (doc.exists) {
       logger.i('Document data: ${doc.data()}');
-      return fromDoc(doc);
+      return fromMap(doc.data() as Map<String, dynamic>);
     } else {
       logger.i('Document not found with id: $docId');
       throw FirestoreNotFoundException(
@@ -101,7 +101,7 @@ abstract class FirestoreRepository<T> {
     for (QueryDocumentSnapshot doc in querySnapshot.docs) {
       if (doc.exists) {
         logger.i('Document data: ${doc.data()}');
-        var result = fromDoc(doc);
+        var result = fromMap(doc.data() as Map<String, dynamic>);
         if (result != null) resultList.add(result);
       } else {
         logger.i(doc.data().toString());
@@ -138,7 +138,7 @@ abstract class FirestoreRepository<T> {
     for (QueryDocumentSnapshot doc in querySnapshot.docs) {
       if (doc.exists) {
         logger.i('Document data: ${doc.data()}');
-        var result = fromDoc(doc);
+        var result = fromMap(doc.data() as Map<String, dynamic>);
         if (result != null) resultList.add(result);
       } else {
         logger.i(doc.data().toString());
@@ -182,7 +182,7 @@ abstract class FirestoreRepository<T> {
 
     if (doc.exists) {
       logger.i('Document data: ${doc.data()}');
-      return fromDoc(doc);
+      return fromMap(doc.data() as Map<String, dynamic>);
     } else {
       logger.i(doc.data().toString());
       throw FirestoreNotFoundException(
