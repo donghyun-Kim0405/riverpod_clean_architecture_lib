@@ -22,7 +22,7 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   fluttertoast: ^8.0.8
   uuid: ^3.0.6
-  intl: ^0.18.0
+  intl: ^0.19.0
   url_launcher: ^6.0.4
   dartz: ^0.10.1
   riverpod: ^2.5.0
