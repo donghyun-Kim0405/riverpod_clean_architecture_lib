@@ -94,20 +94,24 @@ class RiverpodCleanArchitectureUI {
   late Color _baseBottomSheetBackgroundColor;
   Color get baseBottomSheetBackgroundColor => _baseBottomSheetBackgroundColor;
 
-
   Color elevatedContainerColorOpacity = Colors.grey.withOpacity(0.5);
 
   late String _fontFamily;
   String get fontFamily => _fontFamily;
+
+  late bool _statusBarIconBrightness;
+  bool get statusBarIconBrightness => _statusBarIconBrightness;
 
   // Public constructor
   RiverpodCleanArchitectureUI({
     required Color mainBackgroundColor,
     required String fontFamily,
     required Color baseBottomSheetBackgroundColor,
+    required bool statusBarIconBrightness
   }) {
     _mainBackgroundColor = mainBackgroundColor;
     _fontFamily = fontFamily;
     _baseBottomSheetBackgroundColor = baseBottomSheetBackgroundColor;
+    _statusBarIconBrightness = statusBarIconBrightness;
   }
 }
