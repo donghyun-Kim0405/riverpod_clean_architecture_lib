@@ -96,6 +96,9 @@ class RiverpodCleanArchitectureUI {
 
   Color elevatedContainerColorOpacity = Colors.grey.withOpacity(0.5);
 
+  late Color _progressColor;
+  Color get progressColor => _progressColor;
+
   late String _fontFamily;
   String get fontFamily => _fontFamily;
 
@@ -107,11 +110,13 @@ class RiverpodCleanArchitectureUI {
     required Color mainBackgroundColor,
     required String fontFamily,
     required Color baseBottomSheetBackgroundColor,
-    required bool statusBarIconBrightness
+    required bool statusBarIconBrightness,
+    required Color progressColor
   }) {
     _mainBackgroundColor = mainBackgroundColor;
     _fontFamily = fontFamily;
     _baseBottomSheetBackgroundColor = baseBottomSheetBackgroundColor;
     _statusBarIconBrightness = statusBarIconBrightness;
+    _progressColor = progressColor;
   }
 }
