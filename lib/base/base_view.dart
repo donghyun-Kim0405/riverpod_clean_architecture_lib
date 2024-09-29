@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod_clean_architecture_lib/base/widgets/loading.dart';
 import 'package:riverpod_clean_architecture_lib/riverpod_cleanarchitecture.dart';
@@ -98,13 +97,7 @@ abstract class BaseView<T extends BaseController> extends ConsumerWidget {
     return Container();
   }
 
-  void showToast(String message) {
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        timeInSecForIosWeb: 1
-    );
-  }
+
 
   Color? setStatusBarColor() {
     return null;

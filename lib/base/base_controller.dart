@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_clean_architecture_lib/riverpod_cleanarchitecture.dart';
@@ -39,7 +38,6 @@ abstract class BaseController<T extends BaseState> extends StateNotifier<T> with
 
   hideLoading() => resetPageState();
 
-  showToastMessage({required String message}) => Fluttertoast.showToast(msg: message);
 
   AppLifecycleState? lastLifeCycle = null;
 
@@ -160,7 +158,6 @@ abstract class BaseController<T extends BaseState> extends StateNotifier<T> with
     if (onError != null) {
       onError(_exception);
     } else {
-      showToastMessage(message: _exception.msgForUser);
     }
 
     onComplete == null ? hideLoading() : onComplete();

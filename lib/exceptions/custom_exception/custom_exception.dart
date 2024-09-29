@@ -1,6 +1,5 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:riverpod_clean_architecture_lib/riverpod_cleanarchitecture.dart';
 
 /**
@@ -23,8 +22,6 @@ class CustomException implements Exception {
     RiverpodCleanArchitecture.logger.e("${this.runtimeType} - $stackTrace");
     debugPrintStack();
   }
-
-  void showToastMessage() => Fluttertoast.showToast(msg: msgForUser);
 
 }
 
