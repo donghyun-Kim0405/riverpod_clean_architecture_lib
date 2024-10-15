@@ -62,11 +62,7 @@ abstract class FirestoreRepository<T> {
       return fromMap(doc.data() as Map<String, dynamic>);
     } else {
       logger.i('Document not found with id: $docId');
-      throw FirestoreNotFoundException(
-          collectionName: collectionName,
-          msgForDev: 'doc.exists is not true. Document not found with id: $docId',
-          stackTrace: StackTrace.current
-      );
+      return null;
     }
   }
 
@@ -104,12 +100,8 @@ abstract class FirestoreRepository<T> {
         var result = fromMap(doc.data() as Map<String, dynamic>);
         if (result != null) resultList.add(result);
       } else {
-        logger.i(doc.data().toString());
-        throw FirestoreNotFoundException(
-            collectionName: collectionName,
-            msgForDev: 'doc.exists is not true. Document not found with id: ${doc.id}',
-            stackTrace: StackTrace.current
-        );
+        logger.i('Document not found or does not exist with id: ${doc.id}');
+        // 예외를 던지지 않고 로그만 기록하고 계속 진행
       }
     }
 
@@ -117,6 +109,7 @@ abstract class FirestoreRepository<T> {
       QUERY_RESULTS: resultList,
     };
   }
+
 
   /// Query와 함께 다수의 문서를 조회합니다. return (문서리스트, 마지막문서)
   Future<Map<String, dynamic>> getDocumentsWithQuery({
@@ -142,11 +135,6 @@ abstract class FirestoreRepository<T> {
         if (result != null) resultList.add(result);
       } else {
         logger.i(doc.data().toString());
-        throw FirestoreNotFoundException(
-            collectionName: collectionName,
-            msgForDev: 'doc.exists is not true. Document not found with id: ${doc.id}',
-            stackTrace: StackTrace.current
-        );
       }
     }
 
@@ -185,11 +173,6 @@ abstract class FirestoreRepository<T> {
       return fromMap(doc.data() as Map<String, dynamic>);
     } else {
       logger.i(doc.data().toString());
-      throw FirestoreNotFoundException(
-          collectionName: collectionName,
-          msgForDev: 'doc.exists is not true. Document not found with id: ${doc.id}',
-          stackTrace: StackTrace.current
-      );
     }
   }
 
