@@ -3,6 +3,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riverpod_clean_architecture_lib/exceptions/custom_exception/firestore_exception.dart';
 import 'package:riverpod_clean_architecture_lib/riverpod_cleanarchitecture.dart';
 
+
+
+/// Firestore 에서 리스트를 조회할때에는 offset를 사용할 수 없습니다. 조회한 마지막 문서 정보 이후로 이어서 정보 조회가 가능합니다.
+/// 즉 페이징할 경우 리턴해야하는 값은 두가지 입니다. 1. 결과 리스트, 2. 마지막 문서 정보
+/// 이에 따라 결과 리스트를 List<T> 타입으로 리턴하는 것이 아닌
+/// Map<결과 리스트, 마지막 문서 정보> 형태로 리턴합니다.
+/// 이떄 결과리스트는 items 로 조회하고
+/// 마지막 문서 정보는 lastDocument 로 조회합니다.
+class ModelPaginatedResult<T> {
+  final List<T> items;
+  final DocumentSnapshot? lastDocument;
+
+  ModelPaginatedResult({
+    required this.items,
+    required this.lastDocument
+  });
+
+  bool get hasMore => lastDocument != null;
+}
+
+
+
 abstract class FirestoreRepository<T> {
 
   static const QUERY_RESULTS = "queryResults";
@@ -112,7 +134,7 @@ abstract class FirestoreRepository<T> {
 
 
   /// Query와 함께 다수의 문서를 조회합니다. return (문서리스트, 마지막문서)
-  Future<Map<String, dynamic>> getDocumentsWithQuery({
+  Future<ModelPaginatedResult<T>> getDocumentsWithQuery({
     required Query query,
     DocumentSnapshot? startAfterDocument,
     int? limit,
@@ -144,10 +166,10 @@ abstract class FirestoreRepository<T> {
       lastDocument = querySnapshot.docs.last;
     }
 
-    return {
-      QUERY_RESULTS: resultList,
-      LAST_DOCUMENT: lastDocument, // 마지막 문서 반환
-    };
+    return ModelPaginatedResult(
+        items: resultList,
+        lastDocument: lastDocument
+    );
   }
 
   /// ----------------------------- 이하 transaction 사용시 ----------------------------------------------------
