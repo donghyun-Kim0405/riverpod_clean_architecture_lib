@@ -82,7 +82,7 @@ class RouteManager extends NavigatorObserver {
   }
 
   replaceNamed({
-    required BuildContext? context,
+    BuildContext? context,
     required String routes,
     dynamic arg = null,
 
@@ -122,7 +122,7 @@ class RouteManager extends NavigatorObserver {
    *
    * */
   pushNamed(
-      {required BuildContext? context,
+      {BuildContext? context,
       required String routes,
       dynamic arg = null,
 
@@ -168,7 +168,7 @@ class RouteManager extends NavigatorObserver {
     }
   }
 
-  pop({required BuildContext? context}) {
+  pop({BuildContext? context}) {
     if (context != null) {
       Navigator.of(context).pop();
     } else {
@@ -176,7 +176,7 @@ class RouteManager extends NavigatorObserver {
     }
   }
 
-  popUntil({required BuildContext? context, required String untilRoute}) {
+  popUntil({BuildContext? context, required String untilRoute}) {
     if (context != null) {
       Navigator.of(context).popUntil((route) {
         return route.settings.name == untilRoute;
