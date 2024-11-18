@@ -111,6 +111,9 @@ abstract class BaseController<T extends BaseState> extends StateNotifier<T> with
       case AppLifecycleState.detached:
         onDetached();
         break;
+      case AppLifecycleState.hidden:
+        onHidden();
+        break;
     }
   }
 

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../../managers/preference_manager.dart';
-import '../../managers/view_route_manager.dart';
+import '../managers/preference_manager.dart';
+import '../managers/view_route_manager.dart';
 import '../enums/network_tags.dart';
 import 'api_response.dart';
 import 'tokens_model.dart';
