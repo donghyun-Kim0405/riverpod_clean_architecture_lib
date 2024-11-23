@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../riverpod_cleanarchitecture.dart';
 import 'elevated_container.dart';
 
 class Loading extends StatelessWidget {
@@ -7,11 +8,11 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: ElevatedContainer(
         padding: EdgeInsets.all(16),
         child: CircularProgressIndicator(
-          color: Colors.white,
+          color: RiverpodCleanArchitecture.ui.primaryColor,
         ),
       ),
     );

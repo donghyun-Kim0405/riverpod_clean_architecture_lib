@@ -94,6 +94,10 @@ class RiverpodCleanArchitectureUI {
   late Color _baseBottomSheetBackgroundColor;
   Color get baseBottomSheetBackgroundColor => _baseBottomSheetBackgroundColor;
 
+  late Color _primaryColor = Colors.blue;
+  Color get primaryColor => _primaryColor;
+
+
 
   Color elevatedContainerColorOpacity = Colors.grey.withOpacity(0.5);
 
@@ -105,9 +109,11 @@ class RiverpodCleanArchitectureUI {
     required Color mainBackgroundColor,
     required String fontFamily,
     required Color baseBottomSheetBackgroundColor,
+    required Color primaryColor
   }) {
     _mainBackgroundColor = mainBackgroundColor;
     _fontFamily = fontFamily;
     _baseBottomSheetBackgroundColor = baseBottomSheetBackgroundColor;
+    _primaryColor = primaryColor;
   }
 }
