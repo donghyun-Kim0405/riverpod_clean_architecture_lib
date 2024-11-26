@@ -61,7 +61,7 @@ abstract class BaseView<T extends BaseController> extends ConsumerWidget {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         //Status bar color for android
-        statusBarColor: setStatusBarColor() ?? RiverpodCleanArchitecture.ui.statusBarColor,
+        statusBarColor: setStatusBarColor() ?? RiverpodCleanArchitecture.ui.statusBarBackgroundColor,
         statusBarIconBrightness: RiverpodCleanArchitecture.ui.statusBarDarkMode ? Brightness.dark : Brightness.light,
       ),
       child: Material(
