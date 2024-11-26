@@ -62,7 +62,7 @@ abstract class BaseView<T extends BaseController> extends ConsumerWidget {
       value: SystemUiOverlayStyle(
         //Status bar color for android
         statusBarColor: setStatusBarColor() ?? CupertinoColors.white,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: RiverpodCleanArchitecture.ui.statusBarDarkMode ? Brightness.dark : Brightness.light,
       ),
       child: Material(
         color: RiverpodCleanArchitecture.ui.mainBackgroundColor,
