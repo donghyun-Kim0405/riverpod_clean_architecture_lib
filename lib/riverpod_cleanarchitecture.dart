@@ -97,6 +97,9 @@ class RiverpodCleanArchitectureUI {
   late Color _primaryColor = Colors.blue;
   Color get primaryColor => _primaryColor;
 
+  late Color _statusBarBackgroundColor;
+  Color get statusBarBackgroundColor => _statusBarBackgroundColor;
+
   late bool _statusBarDarkMode = false;
   bool get statusBarDarkMode => _statusBarDarkMode;
 
@@ -112,11 +115,13 @@ class RiverpodCleanArchitectureUI {
     required Color baseBottomSheetBackgroundColor,
     required Color primaryColor,
     required bool statusBarDarkMode,
+    required Color statusBarBackgroundColor
   }) {
     _mainBackgroundColor = mainBackgroundColor;
     _fontFamily = fontFamily;
     _baseBottomSheetBackgroundColor = baseBottomSheetBackgroundColor;
     _primaryColor = primaryColor;
     _statusBarDarkMode = statusBarDarkMode;
+    _statusBarBackgroundColor = statusBarBackgroundColor;
   }
 }
